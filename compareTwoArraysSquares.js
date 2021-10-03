@@ -29,8 +29,26 @@ there is a corresponding sqaure value in the other array */
 //  If loop completes (i.e.) all values match
 //  - RETURN true
 
-arr1 = [1]
-arr2 = [4,1,1]
+// for ease in logging
+log = console.log
+
+// getting sample data, size of data by max, starts from min
+getSampleArr = (min, max) => {
+    let nums = []
+    let numsSquares = []
+    for (let i = min; i <= max; i++) {
+        num = Math.floor(Math.random() * max+1);
+        nums.push(num)
+        numsSquares.push(num**2)
+    }
+    return [nums, numsSquares]
+}
+
+// retrieve sample data
+let [arr1, arr2] = getSampleArr(1, 1000000)
+
+// start timer
+console.time("sqaures")
 
 compareArraysForSquares = (arr1, arr2) => {
     // if arguments provided are not array, or empty or their size is different return false
@@ -38,10 +56,18 @@ compareArraysForSquares = (arr1, arr2) => {
         && arr1.length && arr2.length 
         && arr1.length == arr2.length)) 
         return false;
+    
+    console.log(arr2[arr2.length-1]);
 
+    // sort numbers in ascending order in each array
+    [arr1, arr2] = [arr1.sort((num1, num2) => num1 - num2), arr2.sort((num1, num2) => num1 - num2)]
 
-    // arr2 contains sqaures of values of arr1
-    return true
+    // check if each number of arr1, has its sqaure as a value in arr2; 
+    // returns false if it fails for any value, otherwise true
+    return arr1.every((num, index) => num**2 == arr2[index]); 
 }
 
 console.log(compareArraysForSquares(arr1, arr2))
+
+// end timer and log to console
+console.timeEnd("sqaures")
