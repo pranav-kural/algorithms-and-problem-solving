@@ -28,3 +28,20 @@ there is a corresponding sqaure value in the other array */
 //      - RETURN false
 //  If loop completes (i.e.) all values match
 //  - RETURN true
+
+arr1 = [1]
+arr2 = [4,1,1]
+
+compareArraysForSquares = (arr1, arr2) => {
+    // if arguments provided are not array, or empty or their size is different return false
+    if (!(Array.isArray(arr1) && Array.isArray(arr2) 
+        && arr1.length && arr2.length 
+        && arr1.length == arr2.length)) 
+        return false;
+
+
+    // arr2 contains sqaures of values of arr1
+    return true
+}
+
+console.log(compareArraysForSquares(arr1, arr2))
