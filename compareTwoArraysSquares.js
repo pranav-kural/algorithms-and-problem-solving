@@ -50,21 +50,21 @@ let [arr1, arr2] = getSampleArr(1, 1000000)
 // start timer
 console.time("sqaures")
 
-compareArraysForSquares = (arr1, arr2) => {
+compareArraysForSquares = (nums, squaresOfNums) => {
     // if arguments provided are not array, or empty or their size is different return false
-    if (!(Array.isArray(arr1) && Array.isArray(arr2) 
-        && arr1.length && arr2.length 
-        && arr1.length == arr2.length)) 
+    if (!(Array.isArray(nums) && Array.isArray(squaresOfNums) 
+        && nums.length && squaresOfNums.length 
+        && nums.length == squaresOfNums.length)) 
         return false;
     
-    console.log(arr2[arr2.length-1]);
+    console.log("Last element of squaresOfNums:", squaresOfNums[squaresOfNums.length-1]);
 
     // sort numbers in ascending order in each array
-    [arr1, arr2] = [arr1.sort((num1, num2) => num1 - num2), arr2.sort((num1, num2) => num1 - num2)]
+    [nums, squaresOfNums] = [nums.sort((num1, num2) => num1 - num2), squaresOfNums.sort((num1, num2) => num1 - num2)]
 
     // check if each number of arr1, has its sqaure as a value in arr2; 
     // returns false if it fails for any value, otherwise true
-    return arr1.every((num, index) => num**2 == arr2[index]); 
+    return nums.every((num, index) => num**2 == squaresOfNums[index]); 
 }
 
 console.log(compareArraysForSquares(arr1, arr2))
