@@ -7,10 +7,10 @@ The Problem: check whether a given string is palindrome, i.e., reverse of string
 The Requirements: string not empty, not null or undefined
 
 Flow:
-1. divide the string into half
-2. reverse the second half
-3. check if the reverse of second half is equal to first half
-4. if it is, then the string is palindrome, return result
+1. check the first and last character of the string for equality
+2. if similar, check for the first and last character of substring of the original string
+substring = first and last characters removed from the original string
+3. if all checks successful, return true
 
 */
 
