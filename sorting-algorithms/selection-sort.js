@@ -34,6 +34,7 @@ const selectionSort = (arrayToSort) => {
 }
 
 // test
-const arrayToSort = [0,3,99,19,4,40,20,63,11,-5,80,99,201];
+// const arrayToSort = [0,3,99,19,4,40,20,63,11,-5,80,99,201];
+// console.log("Unsorted array: ", arrayToSort, "| Sorted array: ", selectionSort(arrayToSort));
 
-console.log("Unsorted array: ", arrayToSort, "| Sorted array: ", selectionSort(arrayToSort));
+module.exports = { selectionSort }

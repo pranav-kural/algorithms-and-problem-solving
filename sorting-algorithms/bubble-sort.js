@@ -35,6 +35,7 @@ const bubbleSort = (arrOfNumbers) => {
 } // end: bubbleSort
 
 // test
-const unsortedArray = [10,2,4,1,19,0,55,10,96,3,5,201];
+// const unsortedArray = [10,2,4,1,19,0,55,10,96,3,5,201];
+// console.log(`Unsorted values: [${unsortedArray}] | sorted values: [${bubbleSort(unsortedArray)}]`);
 
-console.log(`Unsorted values: [${unsortedArray}] | sorted values: [${bubbleSort(unsortedArray)}]`);
+module.exports = { bubbleSort }
