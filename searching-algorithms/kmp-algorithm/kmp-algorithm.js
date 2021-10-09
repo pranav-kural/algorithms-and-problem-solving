@@ -68,10 +68,10 @@ const KMPSearchArray = (text, pattern) => {
 } // end: KMPsearch
 
 // test
-const text = "abaaca";
-const pattern = "aa";
+const text = "hello Wolod!";
+const pattern = "lo";
 
 // get KMP search results
-[counter, patternPositions] = [...KMPSearchArray(text.split(''),pattern.split(''))]
+[counter, patternPositions] = [...KMPSearchArray(text.split(''),pattern.split(''))];
 
 console.log(`The pattern "${pattern}"" occurs in the text "${text}": ${counter} times, at position(s) ${patternPositions.map(x => x+1).join(",")}`); // [0, 1, 0, 1, 2, 2]
