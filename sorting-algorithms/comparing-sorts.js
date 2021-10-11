@@ -10,18 +10,11 @@
 // initialize unsorted array for testing
 const unsortedArray = sampleUnsortedArray(99999,718429);
 
-function sampleUnsortedArray(size, max) {
-    const randomArray = []
-    for (let i = 0; i <= size; i++) {
-        randomArray.push(Math.floor(Math.random() * max+1))
-    }
-    return randomArray;
-}
-
 // import sorting methods
 const { bubbleSort } = require('./bubble-sort');
 const { selectionSort } = require('./selection-sort');
 const { insertionSort } = require('./insertion-sort');
+const { mergeSort } = require('./merge-sort/merge-sort');
 
 // for ease in logging to console
 log = (...text) => {
@@ -50,8 +43,37 @@ console.time("Insertion Sort");
 const insertionSortResult = insertionSort(unsortedArray);
 
 console.timeEnd("Insertion Sort");
+
+console.time("Merge Sort");
+
+const mergeSortResult = mergeSort(unsortedArray);
+
+console.timeEnd("Merge Sort");
+
 console.log("*****************************************************");
 
-log("Are results of all sort methods same?: ", 
-((bubbleSortResult.join('') === selectionSortResult.join('')) && (bubbleSortResult.join('') === insertionSortResult.join(''))));
+log("Are results of all sort methods same?: ", areAllElementsSame(bubbleSortResult, selectionSortResult, insertionSortResult, mergeSortResult));
 console.log("*****************************************************");
+
+// Helper functions
+
+// get sample unsorted array containing positive integer numbers
+function sampleUnsortedArray(size, max) {
+    const randomArray = []
+    for (let i = 0; i <= size; i++) {
+        randomArray.push(Math.floor(Math.random() * max+1))
+    }
+    return randomArray;
+}
+
+// check for equality; takes in array, returns true if all elements same
+function areAllElementsSame(arr) {
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i-1] != arr[i]) {
+            return false;
+
+        }
+    }
+    return true;
+    return arr[0] == areAllElementsSame(arr.slice(1))
+}

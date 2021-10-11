@@ -34,6 +34,6 @@ const mergeSortedArrays = (arr1, arr2) => {
 };
 
 // test
-console.log("Merged array: ", mergeSortedArrays([1,3,4,80],[3,15,99,102]));
+// console.log("Merged array: ", mergeSortedArrays([1,3,4,80],[3,15,99,102]));
 
 module.exports = { mergeSortedArrays };
