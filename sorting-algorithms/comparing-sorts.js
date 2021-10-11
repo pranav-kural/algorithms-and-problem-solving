@@ -1,5 +1,10 @@
 /**
  * Comparing Bubble, Selection and Insertion sorting algorithms
+ * For an array containing random 100,000 positive integer numbers, following sort
+ * algorithms will complete the sort in order:
+ * 1. Insertion sort (~2 seconds)
+ * 2. Selection sort (~3.7 seconds)
+ * 3. Bubble sort (~15.6 seconds)
  */
 
 // initialize unsorted array for testing
