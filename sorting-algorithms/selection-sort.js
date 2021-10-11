@@ -5,7 +5,7 @@
 const selectionSort = (arrayToSort) => {
 
     // if array null or input provided not array
-    if (!(Array.isArray(arrayToSort)) || !(arrayToSort)) return [];
+    if (!(Array.isArray(arrayToSort))) return [];
 
     // shallow copy of array to sort; so as not to mutate original array
     const arr = [...arrayToSort];
