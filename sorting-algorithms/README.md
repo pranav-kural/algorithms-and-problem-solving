@@ -24,3 +24,12 @@ element on the unsorted side, to see where it would fit properly on the sorted s
 - In case of fairly sorted data (but not exactly sorted) insertion algorithm works really well. As it avoids doing anything at all in the iteration where element in already in it's correct spot (besides checking conditional statement)
 - It's a good online algorithm, i.e., good sorting algorithm to be used in situation where the input data is continuously coming (live data from some other feed) and needs to stay sorted
 - (in most cases of unsorted data) Much faster than bubble sort, and faster than selection sort by a small margin
+
+## Merge Sort
+- One of the more complex (but faster) sorting algorithms
+- Exploits the fact that arrays of length 0 or 1 are always sorted
+- Modus Operandi: 
+    - Keep dividing/spliting array(s) into half, until you reach arrays of length 1 or 0. So for [8,1,60,4] -> [8,1],[60,4] -> [8], [1], [60], [4]
+    - Then put the arrays back in sorted order: [8], [1], [60], [4] -> [1,8],[4,60] -> [1,4,8,60]
+
+
