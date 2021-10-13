@@ -11,7 +11,7 @@
  * @param {integer} high higher end of the array
  * @returns integer value representing the index of the pivot
  */
- const partitionArrayFromFirst = (arr=[], low=0, high=arr.length) => {
+ const partitionArrayFromFirst = (arr=[], low=0, high=arr.length-1) => {
     // check if input is null or is not of type array
     if (!(Array.isArray(arr)) || arr == []) return [];
     if (arr.length === 1) return arr;
@@ -19,7 +19,7 @@
     // set first element as pivot
     let pivotIndex = low;
     
-    for (let i = low+1; i < high; i++) {
+    for (let i = low + 1; i <= high; i++) {
         // if current element at pointer i is smaller than pivot
         if (arr[i] < arr[low]) {
             pivotIndex++; // increment pivotIndex to next element (this element will be greater than pivot)
@@ -43,15 +43,15 @@
  * @param {integer} high higher end of the array
  * @returns integer value representing the index of the pivot
  */
-const partitionArrayFromFirstAlt = (arr=[], low=0, high=arr.length) => {
+const partitionArrayFromFirstAlt = (arr=[], low=0, high=arr.length-1) => {
     // check if input is null or is not of type array
     if (!(Array.isArray(arr)) || arr == []) return [];
     if (arr.length === 1) return arr;
 
     // set first element as pivot
-    let pivotIndex = 0;
+    let pivotIndex = low;
     // set pointers
-    let i=low+1,j=high-1;
+    let i=low+1,j=high;
 
     // loop until point i is less than point j
     while (i < j) {
@@ -81,20 +81,21 @@ const partitionArrayFromFirstAlt = (arr=[], low=0, high=arr.length) => {
  * @param {integer} high higher end of the array
  * @returns integer value representing the index of the pivot
  */
- const partitionArrayFromMiddleAlt = (arr=[], low=0, high=arr.length) => {
+ const partitionArrayFromMiddleAlt = (arr=[], low=0, high=arr.length-1) => {
     // check if input is null or is not of type array
     if (!(Array.isArray(arr)) || arr == []) return [];
     if (arr.length === 1) return arr;
 
     // set first element as pivot
-    let pivotIndex = 0;
-    let midOfArray = Math.floor(arr.length/2);
+    let pivotIndex = low;
+    let midOfArray = Math.floor((low+high)/2);
     // swap middle and first element, to make middle element the pivot
     // why? - in case array is already fairly sorted, high probability the middle element will be median
     // and best case of quicksort is when median is taken as pivot
     [arr[pivotIndex], arr[midOfArray]] = [arr[midOfArray], arr[pivotIndex]];
     // set pointers
-    let i=low+1,j=high-1;
+    let i=((high - low) > 1) ? low + 1 : low;
+    let j=high;
 
     // loop until point i is less than point j
     while (i < j) {
@@ -124,13 +125,13 @@ const partitionArrayFromFirstAlt = (arr=[], low=0, high=arr.length) => {
  * @param {integer} high higher end of the array
  * @returns integer value representing the index of the pivot
  */
-const partitionArrayFromMiddle = (arr=[], low=0, high=arr.length) => {
+const partitionArrayFromMiddle = (arr=[], low=0, high=arr.length-1) => {
     // check if input is null or is not of type array
     if (!(Array.isArray(arr)) || arr == []) return [];
     if (arr.length === 1) return arr;
 
     // select the middle element as pivot
-    let pivotIndex = Math.floor(arr.length/2);
+    let pivotIndex = Math.floor((low+high)/2);
 
     /*
     setup two pointers i and j
@@ -143,7 +144,7 @@ const partitionArrayFromMiddle = (arr=[], low=0, high=arr.length) => {
         and move value lesser than pivot to the left of pivot
         we repeat the steps until i crosses j, i.e., all values checked on both sides of pivot
     */
-    let i=low,j=high-1;
+    let i=low,j=high;
 
     // loop until point i is less than point j
     while (i < j) {
