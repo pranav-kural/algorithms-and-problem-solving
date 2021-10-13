@@ -3,7 +3,8 @@
  */
 
 // import the method to partition array
-const { partitionArrayFromFirst, partitionArrayFromFirstAlt, partitionArrayFromMiddle, partitionArrayFromMiddleAlt } = require('./partition');
+const { partitionArrayFromFirst } = require('./partition');
+// const { partitionArrayFromFirst, partitionArrayFromFirstAlt, partitionArrayFromMiddle, partitionArrayFromMiddleAlt } = require('./partition');
 
 /**
  * Quicksort implementation - takes in an array of numbers, a low and a high (optional), and returns the sorted array
@@ -23,7 +24,7 @@ const quickSort = (arr=[], low=0, high=arr.length-1) => {
         if (low < high) {
             // partition the array from pivot
             // this will mutate the original array (arr) and return the index of pivot
-            const pivotIndex = partitionArrayFromMiddleAlt(arrToSort, low, high);
+            const pivotIndex = partitionArrayFromFirst(arrToSort, low, high);
             // recursive call to the left side of the pivot in the partitioned array
             recursiveQuickSort(arrToSort, low, (pivotIndex > 0) ? pivotIndex-1 : pivotIndex);
             // recursive call to the right side of the pivot in the partitioned array
@@ -40,7 +41,6 @@ const quickSort = (arr=[], low=0, high=arr.length-1) => {
 module.exports = { quickSort }
 
 // test
-const arrayToSort = [10,6,3,8,13,2,20];
-//[0,3,99,19,4,40,20,63,11,-5,80,99,201];
-console.log("Unsorted array: ", arrayToSort);
-console.log("Sorted array: ", quickSort(arrayToSort));
+// const arrayToSort = [0,3,99,19,4,40,20,63,11,-5,80,99,201];
+// console.log("Unsorted array: ", arrayToSort);
+// console.log("Sorted array: ", quickSort(arrayToSort));
