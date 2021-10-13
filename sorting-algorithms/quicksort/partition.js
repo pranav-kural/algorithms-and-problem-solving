@@ -11,7 +11,39 @@
  * @param {integer} high higher end of the array
  * @returns integer value representing the index of the pivot
  */
-const partitionArrayFromFirst = (arr=[], low=0, high=arr.length) => {
+ const partitionArrayFromFirst = (arr=[], low=0, high=arr.length) => {
+    // check if input is null or is not of type array
+    if (!(Array.isArray(arr)) || arr == []) return [];
+    if (arr.length === 1) return arr;
+
+    // set first element as pivot
+    let pivotIndex = low;
+    
+    for (let i = low+1; i < high; i++) {
+        // if current element at pointer i is smaller than pivot
+        if (arr[i] < arr[low]) {
+            pivotIndex++; // increment pivotIndex to next element (this element will be greater than pivot)
+            [arr[i],arr[pivotIndex]] = [arr[pivotIndex],arr[i]]; // swap arr[i] and element at pivotIndex
+        }
+    }
+
+    // finally swap the original pivot (which is at 'low' index) to current position of pivotIndex
+    [arr[low],arr[pivotIndex]] = [arr[pivotIndex],arr[low]];
+
+    // arr has been mutated by this point; return just the index of pivot
+    return pivotIndex;
+}
+
+/**
+ * Given an array of numbers, low and high end; takes first element of the array as pivot,
+ * and mutates the array by moving all values lower than pivot to the left of pivot, 
+ * and all values higher than pivot to the right of pivot.
+ * @param {array} arr Array containing numbers
+ * @param {integer} low lower end of the array
+ * @param {integer} high higher end of the array
+ * @returns integer value representing the index of the pivot
+ */
+const partitionArrayFromFirstAlt = (arr=[], low=0, high=arr.length) => {
     // check if input is null or is not of type array
     if (!(Array.isArray(arr)) || arr == []) return [];
     if (arr.length === 1) return arr;
@@ -151,9 +183,11 @@ const partitionArrayFromMiddle = (arr=[], low=0, high=arr.length) => {
     return pivotIndex;
 }
 
+module.exports = { partitionArrayFromFirst, partitionArrayFromFirstAlt, partitionArrayFromMiddle, partitionArrayFromMiddleAlt };
 
-
-let arr = [10,6,3,8,13,2,20];
-console.log("Pivot (by middle)", arr[partitionArrayFromMiddleAlt(arr)]); // [2,6,3,8,13,10,20];
-console.log("Pivot (by first)", arr[partitionArrayFromFirst(arr)]); // [2,6,3,8,13,10,20];
-console.log((arr));
+// test
+// let arr = [10,6,3,8,13,2,20];
+// console.log("Original array:", arr);
+// // console.log("Pivot (by middle)", arr[partitionArrayFromMiddleAlt(arr)]); // [2,6,3,8,13,10,20];
+// console.log("Pivot (by first)", arr[partitionArrayFromFirst(arr)]); // [2,6,3,8,13,10,20];
+// console.log((arr));
