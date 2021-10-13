@@ -15,6 +15,7 @@ const { bubbleSort } = require('./bubble-sort');
 const { selectionSort } = require('./selection-sort');
 const { insertionSort } = require('./insertion-sort');
 const { mergeSort } = require('./merge-sort/merge-sort');
+const { quickSort } = require('./quicksort/quicksort');
 
 // for ease in logging to console
 log = (...text) => {
@@ -50,9 +51,15 @@ const mergeSortResult = mergeSort(unsortedArray);
 
 console.timeEnd("Merge Sort");
 
+console.time("Quick Sort");
+
+const quickSortResult = quickSort(unsortedArray);
+
+console.timeEnd("Quick Sort");
+
 console.log("*****************************************************");
 
-log("Are results of all sort methods same?: ", areAllElementsSame(bubbleSortResult, selectionSortResult, insertionSortResult, mergeSortResult));
+log("Are results of all sort methods same?: ", areAllElementsSame(bubbleSortResult, selectionSortResult, insertionSortResult, mergeSortResult, quickSortResult));
 console.log("*****************************************************");
 
 // Helper functions
@@ -67,13 +74,14 @@ function sampleUnsortedArray(size, max) {
 }
 
 // check for equality; takes in array, returns true if all elements same
-function areAllElementsSame(arr) {
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i-1] != arr[i]) {
-            return false;
-
+function areAllElementsSame(...arr) {
+    for(let i = 1; i < arr.length; i++) {
+        for (let j = 0; j < arr[0].length; j++) {
+            if (arr[i-1][j] != arr[i][j]) {
+                return false;
+    
+            }
         }
     }
     return true;
-    return arr[0] == areAllElementsSame(arr.slice(1))
 }
