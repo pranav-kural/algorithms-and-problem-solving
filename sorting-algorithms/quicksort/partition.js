@@ -51,7 +51,8 @@ const partitionArrayFromFirstAlt = (arr=[], low=0, high=arr.length-1) => {
     // set first element as pivot
     let pivotIndex = low;
     // set pointers
-    let i=low+1,j=high;
+    let i=((high - low) > 1) ? low + 1 : low;
+    let j=high;
 
     // loop until point i is less than point j
     while (i < j) {
